@@ -1,4 +1,4 @@
-# Spotify_playback_gap_analysis
+# Spotify playback gap analysis
  ***By Youssef ZEROUAL***
 
 This analysis aims to delve into Spotify listening habits by focusing on the **gaps between playback events**. The purpose is to quantify and understand listening consistency and engagement frequency at different levels, including per song, per artist, and per genre. Lower gap values indicate more frequent or habitual listening, while higher values suggest sporadic engagement.
