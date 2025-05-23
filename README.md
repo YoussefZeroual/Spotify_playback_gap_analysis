@@ -1,2 +1,14 @@
 # Spotify_playback_gap_analysis
-This Data analysis draws on the dataset resulting from my spotify EDA and aims to examine song playback gaps of my own Spotify listening data that spans from 2018 to 2025.  
+ ***By Youssef ZEROUAL***
+
+This analysis aims to delve into Spotify listening habits by focusing on the **gaps between playback events**. The purpose is to quantify and understand listening consistency and engagement frequency at different levels, including per song, per artist, and per genre. Lower gap values indicate more frequent or habitual listening, while higher values suggest sporadic engagement.
+
+The dataset used for this analysis is the result of a **previous Exploratory Data Analysis (EDA)**. This prior EDA involved comprehensive data cleaning, preprocessing, and initial feature engineering, drawing from Spotify listening history and a list of liked songs to create a merged dataset (`df_merged`). Short or skipped tracks (those less than 30 seconds) were excluded during this initial process to improve data quality and relevance.
+
+In **this analysis**, we perform **further aggregations and feature engineering** specifically to suit the purposes of gap analysis. The core data used is aggregated into key DataFrames such as `unique_days_by_song`, `unique_days_by_artist`, and `unique_days_by_genre`, which capture playback history and derived time-based metrics.
+
+The core methodology involves engineering new features to quantify listening behavior over time, specifically focusing on **playback gap metrics**. These include `day_gaps` (a dictionary of gaps in days between consecutive listening events), `day_gaps_mean` (the average gap), and `day_gaps_mean_over_day_count` (the average gap normalized by the total playback count). These metrics are computed for songs, artists, and genres. The lifespan of a song, artist, or genre, calculated as the time difference between the first and last playback timestamp, is also computed and used in the analysis.
+
+It's important to understand how "gaps" are defined in this analysis. The primary focus is on **relative playback gaps**, which means the time difference between consecutive days *on which a specific item (song, artist, or genre) was listened to*. When a song has a playback gap, it does not necessarily mean that there was no listening activity at all on that day in the overall dataset; other songs or multiple other songs might have been listened to on that specific day. Therefore, this analysis primarily examines gaps *within* the timeline of days that had at least some listening activity recorded in the dataset.
+
+However, one section of the analysis, specifically the time series analysis, also examines **true gaps**, which are days that had **actually zero songs played** across the entire dataset. This is analyzed by creating a DataFrame (`global_gaps`) that considers every day within the full date range of the listening history and identifying whether each day was 'active' (had playbacks) or 'inactive' (had no playbacks). This allows for an understanding of global listening patterns and periods of inactivity.
